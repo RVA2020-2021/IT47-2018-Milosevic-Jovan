@@ -1,0 +1,69 @@
+
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag==1">Insert new player</h3>
+    <h3 mat-dialog-title *ngIf="flag==2">Update player <strong>{{ dataDialog.firstName }} {{ dataDialog.lastName }}</strong></h3>
+    <h3 mat-dialog-title *ngIf="flag==3">Delete player <strong>{{ dataDialog.firstName }} {{ dataDialog.lastName }}</strong></h3>
+  
+    <form class="mat-dialog-content" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field>
+          <input matInput [matDatepicker]="dateOfBirth" placeholder="Date of Birth" [(ngModel)]="dataDialog.dateOfBirth"
+            name="dateOfBirth" [disabled]="flag == 3">
+          <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+          <mat-datepicker #dateOfBirth></mat-datepicker>
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field>
+            <input matInput placeholder="First Name" [(ngModel)]="dataDialog.firstName" name="firstName" [disabled]="flag==3"
+                required>
+        </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Last Name" [(ngModel)]="dataDialog.lastName" name="lastName" [disabled]="flag==3"
+                    required>
+            </mat-form-field>
+        </div>
+  
+        <div class="form">
+          <mat-form-field>
+              <input matInput placeholder="Registration Number" [(ngModel)]="dataDialog.registrationNumber" name="registrationNumber" [disabled]="flag==3"
+                  required>
+          </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field>
+          <mat-select [(ngModel)]="dataDialog.nationality" placeholder="Nationality" name="nationality" [compareWith]="compareTo"
+            [disabled]="flag == 3">
+            <mat-option *ngFor="let nationality of nationalities" [value]="nationality">
+              {{ nationality.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field>
+          <mat-select [(ngModel)]="dataDialog.team" placeholder="Team" name="team" [compareWith]="compareTo"
+            [disabled]="flag == 3">
+            <mat-option *ngFor="let team of teams" [value]="team">
+              {{ team.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div mat-dialog-actions>
+        <button mat-button *ngIf="flag == 1" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+          (click)="addPlayer()">Save</button>
+        <button mat-button *ngIf="flag == 2" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+          (click)="updatePlayer()">Save</button>
+        <button mat-button *ngIf="flag == 3" [mat-dialog-close]="1" (click)="deletePlayer()">Delete</button>
+        <button mat-button (click)="cancel()" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>

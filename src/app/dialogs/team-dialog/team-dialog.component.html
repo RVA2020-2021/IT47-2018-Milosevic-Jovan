@@ -1,0 +1,51 @@
+
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag==1">Insert new team</h3>
+    <h3 mat-dialog-title *ngIf="flag==2">Update team <strong>{{ dataDialog.name }}</strong></h3>
+    <h3 mat-dialog-title *ngIf="flag==3">Delete team <strong>{{ dataDialog.name }}</strong></h3>
+  
+    <form class="mat-dialog-content" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field>
+          <input matInput [matDatepicker]="foundingDate" placeholder="Founding Date" [(ngModel)]="dataDialog.foundingDate"
+            name="foundingDate" [disabled]="flag == 3">
+          <mat-datepicker-toggle matSuffix [for]="foundingDate"></mat-datepicker-toggle>
+          <mat-datepicker #foundingDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+  
+      <div class="form">
+        <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="dataDialog.name" name="name" [disabled]="flag==3"
+                required>
+        </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Place" [(ngModel)]="dataDialog.place" name="place" [disabled]="flag==3"
+                    required>
+            </mat-form-field>
+        </div>
+
+      <div class="form">
+        <mat-form-field>
+          <mat-select [(ngModel)]="dataDialog.league" placeholder="League" name="league" [compareWith]="compareTo"
+            [disabled]="flag == 3">
+            <mat-option *ngFor="let league of leagues" [value]="league">
+              {{ league.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div mat-dialog-actions>
+        <button mat-button *ngIf="flag == 1" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+          (click)="addTeam()">Save</button>
+        <button mat-button *ngIf="flag == 2" [disabled]="!formControl.valid" [mat-dialog-close]="1"
+          (click)="updateTeam()">Save</button>
+        <button mat-button *ngIf="flag == 3" [mat-dialog-close]="1" (click)="deleteTeam()">Delete</button>
+        <button mat-button (click)="cancel()" tabindex="-1">Cancel</button>
+      </div>
+    </form>
+  </div>

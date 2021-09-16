@@ -1,0 +1,34 @@
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag==1">Insert new league</h3>
+    <h3 mat-dialog-title *ngIf="flag==2">Update league <strong>{{ dataDialog.name }}</strong></h3>
+    <h3 mat-dialog-title *ngIf="flag==3">Delete league <strong>{{ dataDialog.name }}</strong></h3>
+
+    <form class="mat-dialog-content" #formControl="ngForm">
+        <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Name" [(ngModel)]="dataDialog.name" name="name" [disabled]="flag==3"
+                    required>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Label" [(ngModel)]="dataDialog.label" name="label" [disabled]="flag==3"
+                    required>
+            </mat-form-field>
+        </div>
+
+        <div mat-dialog-actions>
+
+            <button mat-button *ngIf="flag==1" type="submit" [mat-dialog-close]="1" (click)="addLeague()"
+                [disabled]="!formControl.valid">Save</button>
+
+            <button mat-button *ngIf="flag==2" type="submit" [mat-dialog-close]="1" (click)="updateLeague()"
+                [disabled]="!formControl.valid">Save</button>
+
+            <button mat-button *ngIf="flag==3" type="submit" [mat-dialog-close]="1" (click)="deleteLeague()">Delete</button>
+
+            <button mat-button (click)="cancel()">Cancel</button>
+
+        </div>
+    </form>
+</div>
