@@ -5,7 +5,7 @@
 <div class="container mat-elavation-z8">
     <mat-form-field>
         <input matInput placeholder="Search players..." (keyup)="applyFilter($event.target.value)">
-      </mat-form-field>
+    </mat-form-field>
     <mat-table matSort #table [dataSource]="dataSource" class="mat-cell">
         <!--ID-->
         <ng-container matColumnDef="id">
@@ -35,7 +35,10 @@
         <!--Nationality-->
         <ng-container matColumnDef="nationality">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Nationality</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.nationality.abbreviation }}</mat-cell>
+            <mat-cell *matCellDef="let row">
+                <img src="https://www.countryflags.io/{{ row.nationality.abbreviation }}/flat/32.png">
+                {{ row.nationality.abbreviation }}
+            </mat-cell>
         </ng-container>
         <!--Team-->
         <ng-container matColumnDef="team">
@@ -50,10 +53,14 @@
                 </button>
             </mat-header-cell>
             <mat-cell *matCellDef="let row; let i = index">
-                <button (click)="openDialog(2, row.id, row.dateOfBirth, row.firstName, row.lastName, row.registrationNumber, row.nationality, row.team)" mat-icon-button color="primary">
+                <button
+                    (click)="openDialog(2, row.id, row.dateOfBirth, row.firstName, row.lastName, row.registrationNumber, row.nationality, row.team)"
+                    mat-icon-button color="primary">
                     <mat-icon aria-label="Edit">edit</mat-icon>
                 </button>
-                <button (click)="openDialog(3, row.id, row.dateOfBirth, row.firstName, row.lastName, row.registrationNumber, row.nationality, row.team)" mat-icon-button color="primary">
+                <button
+                    (click)="openDialog(3, row.id, row.dateOfBirth, row.firstName, row.lastName, row.registrationNumber, row.nationality, row.team)"
+                    mat-icon-button color="primary">
                     <mat-icon aria-label="Delete">delete</mat-icon>
                 </button>
             </mat-cell>

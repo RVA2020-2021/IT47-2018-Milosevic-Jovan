@@ -24,16 +24,16 @@ INSERT INTO "league" ("id", "name", "label") VALUES (10, 'Serbian SuperLiga', 'S
 
 -- NATIONALITY
 
-INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (1, 'Serbian', 'SRB');
-INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (2, 'Spanish', 'SPA');
-INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (3, 'English', 'ENG');
-INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (4, 'German', 'GER');
-INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (5, 'Italian', 'ITA');
-INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (6, 'Portuguese', 'POR');
-INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (7, 'Russian', 'RUS');
-INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (8, 'Denmark', 'DEN');
-INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (9, 'French', 'FRA');
-INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (10, 'Argentine', 'ARG');
+INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (1, 'Serbian', 'RS');
+INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (2, 'Spanish', 'ES');
+INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (3, 'English', 'GB');
+INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (4, 'German', 'DE');
+INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (5, 'Italian', 'IT');
+INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (6, 'Portuguese', 'PT');
+INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (7, 'Russian', 'RU');
+INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (8, 'Denmark', 'DE');
+INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (9, 'French', 'FR');
+INSERT INTO "nationality" ("id", "name", "abbreviation") VALUES (10, 'Argentine', 'AR');
 
 -- TEAM
 

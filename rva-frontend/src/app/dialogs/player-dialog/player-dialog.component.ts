@@ -54,28 +54,28 @@ export class PlayerDialogComponent implements OnInit, OnDestroy {
 
   public addPlayer(): void {
     this.playerService.addPlayer(this.dataDialog).subscribe(() => {
-      this.snackBar.open(`${ this.dataDialog.firstName } ${ this.dataDialog.lastName } is successfully added.`, 'Ok', {duration: 2500});
+      this.snackBar.open(`${ this.dataDialog.firstName } ${ this.dataDialog.lastName } is successfully added.`, 'OK', {duration: 2500});
     }), (error: Error) => {
       console.log(error);
-      this.snackBar.open(`Error: ${ error.name }`, 'Ok', {duration: 2500});
+      this.snackBar.open(`Error: ${ error.name }`, 'OK', {duration: 2500});
     };
   }
 
   public updatePlayer(): void {
     this.playerService.updatePlayer(this.dataDialog).subscribe(() => {
-      this.snackBar.open(`${ this.dataDialog.firstName } ${ this.dataDialog.lastName } is successfully updated.`, 'Ok', {duration: 2500});
+      this.snackBar.open(`${ this.dataDialog.firstName } ${ this.dataDialog.lastName } is successfully updated.`, 'OK', {duration: 2500});
     }), (error: Error) => {
       console.log(error);
-      this.snackBar.open(`Error: ${ error.name }`, 'Ok', {duration: 2500});
+      this.snackBar.open(`Error: ${ error.name }`, 'OK', {duration: 2500});
     };
   }
 
   public deletePlayer(): void {
     this.playerService.deletePlayer(this.dataDialog.id).subscribe(() => {
-      this.snackBar.open(`${ this.dataDialog.firstName } ${ this.dataDialog.lastName } is successfully deleted.`, 'Ok', {duration: 2500});
+      this.snackBar.open(`${ this.dataDialog.firstName } ${ this.dataDialog.lastName } is successfully deleted.`, 'OK', {duration: 2500});
     }), (error: Error) => {
       console.log(error);
-      this.snackBar.open(`Error: ${ error.name }`, 'Ok', {duration: 2500});
+      this.snackBar.open(`Error: ${ error.name }`, 'OK', {duration: 2500});
     };
   }
 

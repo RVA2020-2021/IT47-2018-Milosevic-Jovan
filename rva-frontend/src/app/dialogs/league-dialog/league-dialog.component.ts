@@ -23,28 +23,28 @@ export class LeagueDialogComponent implements OnInit {
 
   public addLeague(): void {
     this.leagueService.addLeague(this.dataDialog).subscribe(() => {
-      this.snackBar.open(`${ this.dataDialog.name } is successfully added.`, 'Ok', {duration: 2500});
+      this.snackBar.open(`${ this.dataDialog.name } is successfully added.`, 'OK', {duration: 2500});
     }), (error: Error) => {
       console.log(error);
-      this.snackBar.open(`Error: ${ error.name }`, 'Ok', {duration: 2500});
+      this.snackBar.open(`Error: ${ error.name }`, 'OK', {duration: 2500});
     };
   }
 
   public updateLeague(): void {
     this.leagueService.updateLeague(this.dataDialog).subscribe(() => {
-      this.snackBar.open(`${ this.dataDialog.name } is successfully updated.`, 'Ok', {duration: 2500});
+      this.snackBar.open(`${ this.dataDialog.name } is successfully updated.`, 'OK', {duration: 2500});
     }), (error: Error) => {
       console.log(error);
-      this.snackBar.open(`Error: ${ error.name }`, 'Ok', {duration: 2500});
+      this.snackBar.open(`Error: ${ error.name }`, 'OK', {duration: 2500});
     };
   }
 
   public deleteLeague(): void {
     this.leagueService.deleteLeague(this.dataDialog.id).subscribe(() => {
-      this.snackBar.open(`${ this.dataDialog.name } is successfully deleted.`, 'Ok', {duration: 2500});
+      this.snackBar.open(`${ this.dataDialog.name } is successfully deleted.`, 'OK', {duration: 2500});
     }), (error: Error) => {
       console.log(error);
-      this.snackBar.open(`Error: ${ error.name }`, 'Ok', {duration: 2500});
+      this.snackBar.open(`Error: ${ error.name }`, 'OK', {duration: 2500});
     };
   }
 

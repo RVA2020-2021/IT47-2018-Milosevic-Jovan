@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Team } from './../../models/team';
 import { PlayerService } from './../../services/player.service';
 import { Player } from './../../models/player';
@@ -21,6 +22,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
   dataSource: MatTableDataSource<Player>;
   subscription: Subscription;
 
+  searchSubscription: Subscription;
+  URL = environment.api_url + "/players";
+
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -33,6 +37,9 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    if (this.searchSubscription!=undefined) {
+      this.searchSubscription.unsubscribe();
+    }
   }
 
   public loadData() {
@@ -43,6 +50,16 @@ export class PlayerComponent implements OnInit, OnDestroy {
     }), (error: Error) => {
       console.log(error);
     }
+  }
+
+  public getPlayersByName(firstName: string, lastName: string) {
+    this.searchSubscription = this.playerService.getPlayersByName(firstName, lastName).subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    }), (error: Error) => {
+      console.log(error);
+    };
   }
 
   public openDialog(flag: number, id?: number, dateOfBirth?: Date, firstName?: string, lastName?: string, registrationNumber?: string, nationality?: Nationality, team?: Team) {
@@ -56,10 +73,18 @@ export class PlayerComponent implements OnInit, OnDestroy {
     })
   }
 
+  // Custom filter that uses first and last name to search for players
   public applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
-    filterValue = filterValue.toLocaleLowerCase();
-    this.dataSource.filter = filterValue;
+    const searchTerms = filterValue.split(" ", 2);
+    if (Boolean(filterValue)) { // Ensuring that the filter is not empty
+      if (searchTerms.length==1) {
+        searchTerms.push(""); // add empty char if last name is not entered
+      }
+      this.getPlayersByName(searchTerms[0], searchTerms[1])
+    } else {
+      this.loadData();
+    }
   }
 
 }

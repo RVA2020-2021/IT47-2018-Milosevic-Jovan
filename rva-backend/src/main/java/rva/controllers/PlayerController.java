@@ -30,7 +30,7 @@ public class PlayerController {
     @GetMapping("players/search")
     public List<Player> getPlayersByName(String firstName, String lastName) {
         return playerRepository
-                .findByFirstNameContainingAndLastNameContainingIgnoreCase(firstName, lastName);
+                .findByFirstNameContainingIgnoreCaseAndLastNameContainingIgnoreCase(firstName, lastName);
     }
 
     @PostMapping("players/insert")

@@ -19,6 +19,9 @@ export class NationalityComponent implements OnInit, OnDestroy {
   dataSource: MatTableDataSource<Nationality>;
   subscription: Subscription;
 
+  flags = [];
+  
+
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 

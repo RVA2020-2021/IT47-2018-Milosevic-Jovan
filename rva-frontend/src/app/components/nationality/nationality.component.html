@@ -20,7 +20,10 @@
       <!-- Abbreviation -->
       <ng-container matColumnDef="abbreviation">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Abbreviation</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.abbreviation }}</mat-cell>
+        <mat-cell *matCellDef="let row">
+          <img src="https://www.countryflags.io/{{ row.abbreviation }}/flat/32.png">
+          {{ row.abbreviation }}
+        </mat-cell>
       </ng-container>
       <!-- Action Buttons -->
       <ng-container matColumnDef="action">
